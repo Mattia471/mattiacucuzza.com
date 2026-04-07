@@ -1,7 +1,6 @@
-import React from 'react';
-import { User, MousePointer2 } from 'lucide-react';
-import { Button } from '../ui/Button';
-import { Badge } from '../ui/Badge';
+import {User} from 'lucide-react';
+import {Button} from '../ui/Button';
+import {Badge} from '../ui/Badge';
 
 export const Hero = () => {
     return (
