@@ -16,6 +16,12 @@ i18n
         resources: {
             en: {
                 translation: {
+                    referral: {
+                        banner_title: "Discount Unlocked",
+                        banner_text: "Discount {{discount}}% applied with code {{code}}",
+                        badge_pricing: "Special Reward Applied",
+                        applied_tag: "Referral Discount -{{discount}}% Applied"
+                    },
                     nav: {
                         menu_label: "Navigation",
                         about: "About",
@@ -112,6 +118,12 @@ i18n
             },
             it: {
                 translation: {
+                    referral: {
+                        banner_title: "Sconto Sbloccato",
+                        banner_text: "Sconto {{discount}}% applicato con codice {{code}}",
+                        badge_pricing: "Premio Speciale Applicato",
+                        applied_tag: "Sconto Referral -{{discount}}% Applicato"
+                    },
                     nav: {
                         menu_label: "Navigazione",
                         about: "Chi Sono",
