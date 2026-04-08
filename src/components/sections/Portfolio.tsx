@@ -10,7 +10,7 @@ export const Portfolio = () => {
             img: "/project_1.png",
             tags: ["React", "Next.js"],
             align: "start",
-            link: "https://nextgen-academy.org",
+            link: "https://newgenerationacademy.it/",
             desc: t('portfolio.projects.nga.desc')
         },
         {

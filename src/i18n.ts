@@ -47,8 +47,8 @@ i18n
                         title: "Proven Solutions.",
                         projects: {
                             nga: {
-                                cat: "Urban Transformation Platform",
-                                desc: "Management of international events and training programs."
+                                cat: "Dance School",
+                                desc: "Showcase site with custom event management"
                             },
                             reverse: {
                                 cat: "B2B SaaS & Referral System",
@@ -137,8 +137,8 @@ i18n
                         title: "Soluzioni Concrete.",
                         projects: {
                             nga: {
-                                cat: "Piattaforma Trasformazione Urbana",
-                                desc: "Gestione eventi e programmi formativi internazionali."
+                                cat: "Scuola di ballo",
+                                desc: "Sito vetrina con gestione eventi personalizzata"
                             },
                             reverse: {
                                 cat: "B2B SaaS & Sistemi Referral",
