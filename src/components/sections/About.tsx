@@ -43,7 +43,7 @@ export const About = () => {
 
                             {/* Card IG / Bachata: Questa attira l'attenzione */}
                             <a
-                                href="https://www.instagram.com/tuo_profilo/"
+                                href="https://www.instagram.com/mattiacucuzza_/"
                                 target="_blank"
                                 rel="noreferrer"
                                 className="p-6 border border-emerald-500/30 rounded-2xl bg-emerald-500/5 hover:bg-emerald-500/10 transition-all group relative overflow-hidden"

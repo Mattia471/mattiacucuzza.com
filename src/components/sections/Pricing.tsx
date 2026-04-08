@@ -5,7 +5,7 @@ import {useReferral} from "../../context/ReferralContext.tsx";
 
 export const Pricing = () => {
     const { t } = useTranslation();
-    const { discount, hasDiscount } = useReferral();
+    const { discount, hasDiscount,referralCode } = useReferral();
 
     // Calcola il prezzo finale o restituisce 'Quote'
     const calculatePrice = (basePrice: string) => {
@@ -58,12 +58,11 @@ export const Pricing = () => {
     ];
 
     // Funzione per generare il link mail dinamico con info sullo sconto
-    const generateMailLink = (planName: string, originalPrice: string) => {
+    const generateMailLink = (planName: string) => {
         const email = "cucuzzamattia47@gmail.com";
-        const finalPrice = calculatePrice(originalPrice);
 
         const referralNote = hasDiscount
-            ? `\n(Applicato sconto referral: -${discount * 100}% | Prezzo finale stimato: €${finalPrice})`
+            ? `\n(Applicato codice sconto : ${referralCode?.toUpperCase()})`
             : "";
 
         const subject = encodeURIComponent(`Richiesta Progetto: ${planName}`);
@@ -132,7 +131,7 @@ export const Pricing = () => {
                             <Button
                                 variant={pkg.popular ? 'primary' : 'outline'}
                                 className="w-full text-[10px] tracking-[2px] font-black uppercase"
-                                href={generateMailLink(pkg.name, pkg.price)}
+                                href={generateMailLink(pkg.name)}
                             >
                                 {pkg.price === 'Quote' ? t('pricing.cta_quote') : t('pricing.cta_standard')}
                             </Button>
