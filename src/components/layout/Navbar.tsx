@@ -76,16 +76,22 @@ export const Navbar = () => {
             </div>
 
             {/* --- FULLSCREEN MOBILE MENU (STYLE NGA) --- */}
+            {/* --- FULLSCREEN MOBILE MENU (STYLE NGA) --- */}
             <div className={`fixed inset-0 bg-[#050505] z-[105] md:hidden transition-all duration-500 ease-in-out ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
 
-                {/* Decorative Glows */}
+                {/* Decorative Glow */}
                 <div className="absolute top-1/4 right-0 w-64 h-64 bg-emerald-500/10 blur-[120px]" />
 
                 <div className="relative h-full flex flex-col justify-center px-10">
-                    <p className="text-[10px] font-black uppercase tracking-[6px] text-emerald-500 mb-12 opacity-60 italic">
-                        {t('nav.menu_label') || 'Navigation'}
-                    </p>
 
+                    {/* LA LABEL: Posizionata sopra i link */}
+                    <div className={`mb-12 transition-all duration-700 delay-100 ${isMenuOpen ? 'translate-y-0 opacity-60' : '-translate-y-4 opacity-0'}`}>
+                        <p className="text-[10px] font-black uppercase tracking-[6px] text-emerald-500 italic">
+                            {t('nav.menu_label')}
+                        </p>
+                    </div>
+
+                    {/* Links Navigazione */}
                     <nav className="flex flex-col gap-8">
                         {menuItems.map((item, i) => (
                             <a
@@ -93,13 +99,13 @@ export const Navbar = () => {
                                 href={`#${item.toLowerCase()}`}
                                 onClick={() => setIsMenuOpen(false)}
                                 className={`group flex items-center justify-between transition-all duration-700 ${isMenuOpen ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}
-                                style={{ transitionDelay: `${i * 100}ms` }}
+                                style={{ transitionDelay: `${(i + 2) * 100}ms` }} // Delay aumentato per far apparire prima la label
                             >
                                 <div className="flex items-center gap-6">
                                     <span className="text-emerald-500/30 text-sm font-black italic">0{i + 1}</span>
                                     <span className="text-5xl font-black uppercase tracking-tighter text-white group-hover:text-emerald-400 transition-colors">
-                                        {t(`nav.${item.toLowerCase()}`)}
-                                    </span>
+                            {t(`nav.${item.toLowerCase()}`)}
+                        </span>
                                 </div>
                                 <ChevronRight className="text-emerald-500 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" size={32} />
                             </a>
