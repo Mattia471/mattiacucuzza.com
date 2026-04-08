@@ -33,14 +33,16 @@ i18n
                         scroll: "Scroll"
                     },
                     about: {
-                        badge: "Behind the code",
+                        badge: "The Creative Engineer",
                         experience_years: "5+",
                         experience_label: "Years of<br/>Development",
-                        title: "I am not <br/>an agency.",
-                        p1: "While agencies sell standardized packages, I build bespoke solutions. Every line of code is written to solve your specific business needs.",
-                        p2: "My approach is direct: you analyze your business with me, and I'm the one answering the phone. This ensures rapid execution and extreme attention to detail.",
+                        title: "Precision in Rhythm, <br/> <span class='text-emerald-500'>Performance in Code.</span>",
+                        p1: "I don't just write code; I orchestrate digital experiences. My background as a professional Bachata dancer has taught me that every movement — like every line of code — must have purpose, timing, and perfect execution.",
+                        p2: "Whether I'm leading on a dance floor or architecting a complex Web App, my goal is the same: creating a seamless connection between the user and the interface, ensuring fluid motion and rock-solid stability.",
                         card_1: "Clean Architecture",
-                        card_2: "Direct Support"
+                        card_2: "Fast Performance",
+                        card_3: "Rhythm & Code",
+                        card_3_desc: "See how I move on Instagram"
                     },
                     portfolio: {
                         badge: "The Deployments",
@@ -78,21 +80,24 @@ i18n
                                 f1: "5-Section Landing Page",
                                 f2: "SEO & Performance Ready",
                                 f3: "Mobile First Design",
-                                f4: "Direct Contact Form"
+                                f4: "Direct Contact Form",
+                                f5: "Domain & Hosting Setup"
                             },
                             management: {
                                 name: "Management",
                                 f1: "Integrated SQL Database",
                                 f2: "Online Booking & Registration",
                                 f3: "Email Automation",
-                                f4: "Custom Admin Dashboard"
+                                f4: "Admin Dashboard",
+                                f5: "Domain & Hosting Setup"
                             },
                             custom: {
                                 name: "Custom Lab",
                                 f1: "Bespoke Logic Development",
                                 f2: "Complex API Integration",
                                 f3: "Mobile Web App (PWA)",
-                                f4: "Maintenance Priority"
+                                f4: "Maintenance Priority",
+                                f5: "Domain & Hosting Setup"
                             }
                         }
                     },
@@ -123,14 +128,16 @@ i18n
                         scroll: "Scorri"
                     },
                     about: {
-                        badge: "Dietro il codice",
+                        badge: "L'Ingegnere Creativo",
                         experience_years: "5+",
                         experience_label: "Anni di<br/>Sviluppo",
-                        title: "Non sono <br/>un'agenzia.",
-                        p1: "Mentre le agenzie vendono pacchetti standardizzati, io costruisco soluzioni sartoriali. Ogni riga di codice è scritta per rispondere a un'esigenza specifica della tua attività.",
-                        p2: "Il mio approccio è diretto: analizzi il tuo business con me, rispondo io al telefono. Questo garantisce una velocità di esecuzione e una cura dei dettagli estrema.",
+                        title: "Precisione nel Ritmo, <br/> <span class='text-emerald-500'>Performance nel Codice.</span>",
+                        p1: "Non scrivo solo codice; orchestro esperienze digitali. Il mio background come ballerino professionista di Bachata mi ha insegnato che ogni movimento — come ogni riga di codice — deve avere uno scopo, un tempo e un'esecuzione perfetta.",
+                        p2: "Che io stia guidando in pista o progettando una Web App complessa, il mio obiettivo è lo stesso: creare una connessione fluida tra utente e interfaccia, garantendo armonia nei movimenti e massima stabilità tecnica.",
                         card_1: "Architettura Pulita",
-                        card_2: "Supporto Diretto"
+                        card_2: "Performance Elevate",
+                        card_3: "Ritmo & Codice",
+                        card_3_desc: "Scopri il mio lato artistico su IG"
                     },
                     portfolio: {
                         badge: "I miei Lavori",
@@ -163,21 +170,24 @@ i18n
                                 f1: "Sito Vetrina 5 Sezioni",
                                 f2: "SEO & Performance Ready",
                                 f3: "Mobile First Design",
-                                f4: "Contact Form diretto"
+                                f4: "Contact Form diretto",
+                                f5: "Setup Dominio & Hosting"
                             },
                             management: {
                                 name: "Management",
                                 f1: "Database SQL Integrato",
                                 f2: "Iscrizioni & Slot Online",
                                 f3: "Automazione Email",
-                                f4: "Admin Dashboard Custom"
+                                f4: "Admin Dashboard",
+                                f5: "Setup Dominio & Hosting"
                             },
                             custom: {
                                 name: "Custom Lab",
                                 f1: "Sviluppo Logiche Ad-hoc",
                                 f2: "Integrazioni API complesse",
                                 f3: "App Mobile Web (PWA)",
-                                f4: "Manutenzione Prioritaria"
+                                f4: "Manutenzione Prioritaria",
+                                f5: "Setup Dominio & Hosting"
                             }
                         }
                     },

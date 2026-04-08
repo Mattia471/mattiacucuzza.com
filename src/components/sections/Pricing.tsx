@@ -13,7 +13,8 @@ export const Pricing = () => {
                 t('pricing.plans.essential.f1'),
                 t('pricing.plans.essential.f2'),
                 t('pricing.plans.essential.f3'),
-                t('pricing.plans.essential.f4')
+                t('pricing.plans.essential.f4'),
+                t('pricing.plans.essential.f5')
             ],
         },
         {
@@ -23,7 +24,8 @@ export const Pricing = () => {
                 t('pricing.plans.management.f1'),
                 t('pricing.plans.management.f2'),
                 t('pricing.plans.management.f3'),
-                t('pricing.plans.management.f4')
+                t('pricing.plans.management.f4'),
+                t('pricing.plans.management.f5'),
             ],
             popular: true,
         },
@@ -34,7 +36,8 @@ export const Pricing = () => {
                 t('pricing.plans.custom.f1'),
                 t('pricing.plans.custom.f2'),
                 t('pricing.plans.custom.f3'),
-                t('pricing.plans.custom.f4')
+                t('pricing.plans.custom.f4'),
+                t('pricing.plans.custom.f5'),
             ],
         }
     ];
