@@ -17,6 +17,7 @@ i18n
             en: {
                 translation: {
                     nav: {
+                        menu_label: "Navigation",
                         about: "About",
                         work: "Work",
                         pricing: "Pricing",
@@ -106,6 +107,7 @@ i18n
             it: {
                 translation: {
                     nav: {
+                        menu_label: "Navigazione",
                         about: "Chi Sono",
                         work: "Progetti",
                         pricing: "Prezzi",
