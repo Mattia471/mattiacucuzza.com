@@ -7,6 +7,7 @@ export const Pricing = () => {
 
     const plans = [
         {
+            id: "essential",
             name: t('pricing.plans.essential.name'),
             price: "500",
             features: [
@@ -18,6 +19,7 @@ export const Pricing = () => {
             ],
         },
         {
+            id: "management",
             name: t('pricing.plans.management.name'),
             price: "900",
             features: [
@@ -30,6 +32,7 @@ export const Pricing = () => {
             popular: true,
         },
         {
+            id: "custom",
             name: t('pricing.plans.custom.name'),
             price: "Quote",
             features: [
@@ -41,6 +44,14 @@ export const Pricing = () => {
             ],
         }
     ];
+
+    // Funzione per generare il link mail dinamico
+    const generateMailLink = (planName: string) => {
+        const email = "cucuzzamattia47@gmail.com";
+        const subject = encodeURIComponent(`Richiesta Progetto: ${planName}`);
+        const body = encodeURIComponent(`Ciao Mattia,\n\nsono interessato al piano ${planName}.\nVorrei ricevere maggiori informazioni per iniziare a lavorare alla mia visione.\n\nGrazie!`);
+        return `mailto:${email}?subject=${subject}&body=${body}`;
+    };
 
     return (
         <section id="pricing" className="py-32 px-6 border-t border-white/5 bg-[#050505]">
@@ -90,7 +101,7 @@ export const Pricing = () => {
                             <Button
                                 variant={pkg.popular ? 'primary' : 'outline'}
                                 className="w-full text-[10px]"
-                                href={pkg.price === 'Quote' ? "mailto:cucuzzamattia47@gmail.com" : "#contact"}
+                                href={generateMailLink(pkg.name)}
                             >
                                 {pkg.price === 'Quote' ? t('pricing.cta_quote') : t('pricing.cta_standard')}
                             </Button>
