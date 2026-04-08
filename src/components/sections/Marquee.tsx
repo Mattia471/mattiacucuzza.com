@@ -10,7 +10,7 @@ export const Marquee = () => {
             <div className="marquee-container">
                 {/* Blocco 1 */}
                 <div className="marquee-text">
-                    <h2 className="text-[12vw] font-black leading-none tracking-tighter text-zinc-800/40 uppercase select-none flex items-center">
+                    <h2 className="text-[12vw] font-black leading-none tracking-tighter text-zinc-300/40 uppercase select-none flex items-center">
                         SCALABILITY <span className="mx-10 text-emerald-500">•</span>
                         AUTOMATION <span className="mx-10 text-emerald-500">•</span>
                         PERFORMANCE <span className="mx-10 text-emerald-500">•</span>&nbsp;
@@ -19,7 +19,7 @@ export const Marquee = () => {
 
                 {/* Blocco 2 (Necessario per il loop infinito senza scatti) */}
                 <div className="marquee-text">
-                    <h2 className="text-[12vw] font-black leading-none tracking-tighter text-zinc-800/40 uppercase select-none flex items-center">
+                    <h2 className="text-[12vw] font-black leading-none tracking-tighter text-zinc-300/40 uppercase select-none flex items-center">
                         SCALABILITY <span className="mx-10 text-emerald-500">•</span>
                         AUTOMATION <span className="mx-10 text-emerald-500">•</span>
                         PERFORMANCE <span className="mx-10 text-emerald-500">•</span>&nbsp;
