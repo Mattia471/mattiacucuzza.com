@@ -69,6 +69,7 @@ i18n
                         item3: "PERFORMANCE"
                     },
                     pricing: {
+                        discount_applied: "Referral Discount Applied",
                         title: "The Lab Plans",
                         subtitle: "Clear investment. Scalable results.",
                         base: "Base",
@@ -159,6 +160,7 @@ i18n
                         }
                     },
                     pricing: {
+                        discount_applied: "Sconto Referral Applicato",
                         title: "Piani Lab",
                         subtitle: "Investimento chiaro. Risultati scalabili.",
                         base: "Base",
