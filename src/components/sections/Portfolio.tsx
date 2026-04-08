@@ -1,102 +1,109 @@
-import { ExternalLink } from 'lucide-react';
+import {ArrowUpRight, ExternalLink} from 'lucide-react';
+import {useTranslation} from "react-i18next";
 
 export const Portfolio = () => {
+    const {t} = useTranslation();
     const projects = [
         {
             title: "New Generation Academy",
-            cat: "Urban Transformation Platform",
+            cat: t('portfolio.projects.nga.cat'),
             img: "/project_1.png",
-            tags: ["React", "Next.js", "Sustainability"],
+            tags: ["React", "Next.js"],
             align: "start",
             link: "https://nextgen-academy.org",
-            desc: "Gestione eventi e programmi formativi internazionali."
-        },
-        {
-            title: "Late Night Hoop Shop",
-            cat: "E-commerce & Analytics",
-            img: "/project_2.png",
-            tags: ["React", "Vercel", "Tailwind"],
-            align: "end",
-            link: "https://late-night-hoop-shop.vercel.app/",
-            desc: "Store digitale ad alte prestazioni con visualizzazione dinamica dei prodotti."
+            desc: t('portfolio.projects.nga.desc')
         },
         {
             title: "Reverse Wind Portal",
-            cat: "B2B SaaS & Referral System",
+            cat: t('portfolio.projects.reverse.cat'),
             img: "/project_3.png",
-            tags: ["Auth Systems", "Node.js", "Referral Logic"],
-            align: "start", // Questo lo sposta leggermente in basso creando il look asimmetrico
+            tags: ["Auth", "Node.js"],
+            align: "end",
             link: "https://app.reversewind.it/login",
-            note: "Original Architecture (V1.0)", // Specifica il tuo ruolo storico
-            desc: "Progettazione integrale dell'architettura iniziale, area riservata e logiche di sconti per referral."
+            note: t('portfolio.projects.reverse.note'),
+            desc: t('portfolio.projects.reverse.desc')
+        },
+        {
+            title: "Late Night Hoop Shop",
+            cat: t('portfolio.projects.hoop.cat'),
+            img: "/project_2.png",
+            tags: ["React", "Vercel"],
+            align: "start",
+            link: "https://late-night-hoop-shop.vercel.app/",
+            desc: t('portfolio.projects.hoop.desc')
         },
     ];
 
     return (
-        <section id="work" className="py-32 px-6 bg-[#050505]">
+        <section id="work" className="py-24 md:py-32 px-4 md:px-6 bg-[#050505]">
             <div className="max-w-7xl mx-auto">
-                <div className="text-center mb-24">
-                    <p className="text-emerald-500 text-[10px] font-black uppercase tracking-[5px] mb-4">The Deployments</p>
-                    <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter italic leading-none text-white">
-                        Proven <br/>Solutions.
+                <div className="text-center mb-16 md:mb-24">
+                    <p className="text-emerald-500 text-[10px] font-black uppercase tracking-[5px] mb-4">{t('portfolio.badge')}</p>
+                    <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter italic leading-[0.8] text-white">
+                        {t('portfolio.title')}
                     </h2>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-x-20 md:gap-y-32">
                     {projects.map((project, i) => (
-                        <div
+                        <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             key={i}
-                            className={`group space-y-6 ${project.align === 'end' ? 'md:mt-32' : ''}`}
+                            className={`group block relative ${project.align === 'end' ? 'md:mt-40' : ''}`}
                         >
-                            <div
-                                className="relative aspect-video bg-zinc-900 rounded-[40px] overflow-hidden border border-white/5 shadow-2xl transition-all group-hover:border-emerald-500/30">
+                            {/* Card Immagine con Effetto Hover */}
+                            <div className="relative aspect-[16/10] bg-zinc-900 rounded-2xl md:rounded-[40px] overflow-hidden border border-white/5 shadow-2xl transition-all duration-500 group-hover:border-emerald-500/50 group-hover:shadow-emerald-500/10">
                                 <img
                                     src={project.img}
                                     alt={project.title}
-                                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                                    className="w-full h-full object-cover transition-all duration-700 scale-[1.01] group-hover:scale-110 blur-0 group-hover:blur-[2px] opacity-80 group-hover:opacity-40"
                                 />
-                                <div
-                                    className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
-                                <div
-                                    className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <div
-                                        className="w-12 h-12 rounded-full bg-emerald-500 text-black flex items-center justify-center">
-                                        <a href={project.link} target="_blank" rel="noopener noreferrer"
-                                           aria-label="Apri sito esterno"
-                                           className="inline-flex items-center justify-center w-full h-full">
-                                            <ExternalLink size={20} className="animate-pulse"/>
-                                        </a></div>
+
+                                {/* Overlay Content (visibile bene al passaggio mouse o focus) */}
+                                <div className="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-black/20 backdrop-blur-sm">
+                                    <p className="text-white text-center px-8 text-sm md:text-base font-medium max-w-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                        {project.desc}
+                                    </p>
+                                    <div className="mt-6 w-12 h-12 rounded-full bg-emerald-500 text-black flex items-center justify-center translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
+                                        <ArrowUpRight size={24} strokeWidth={3} />
+                                    </div>
+                                </div>
+
+                                {/* Label Mobile (Sempre visibile solo su mobile per aiutare l'utente) */}
+                                <div className="absolute bottom-4 right-4 md:hidden bg-emerald-500 p-2 rounded-full text-black">
+                                    <ExternalLink size={16} />
                                 </div>
                             </div>
 
-                            <div className="flex justify-between items-start px-4">
-                                <div>
-                                    <h3 className="text-2xl font-black uppercase italic tracking-tighter text-white">
-                                        {project.title}
-                                    </h3>
-                                    <div className="flex items-center gap-3">
-                                        <p className="text-zinc-500 text-[10px] uppercase font-bold tracking-widest mt-1">
-                                            {project.cat}
-                                        </p>
-                                        {/* AGGIUNTA: Badge per la versione originale */}
+                            {/* Info Sotto l'immagine */}
+                            <div className="mt-6 md:mt-8 flex justify-between items-end px-2">
+                                <div className="space-y-1">
+                                    <div className="flex items-center gap-2">
+                                        <h3 className="text-2xl md:text-3xl font-black uppercase italic tracking-tighter text-white group-hover:text-emerald-400 transition-colors">
+                                            {project.title}
+                                        </h3>
                                         {project.note && (
-                                            <span
-                                                className="text-[7px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded-full font-black uppercase tracking-tighter mt-1">
-                    {project.note}
-                </span>
+                                            <span className="hidden md:block text-[7px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded-full font-black uppercase tracking-tighter">
+                                                {project.note}
+                                            </span>
                                         )}
                                     </div>
+                                    <p className="text-zinc-500 text-[10px] md:text-xs uppercase font-bold tracking-[3px]">
+                                        {project.cat}
+                                    </p>
                                 </div>
-                                <div className="flex gap-2">
-                                    {project.tags.map(tag => (
-                                        <span key={tag}
-                                              className="text-[8px] font-black px-2 py-1 rounded bg-white/5 text-white/40 border border-white/10 uppercase">
-                {tag}
-            </span>
+
+                                <div className="flex gap-1.5 mb-1">
+                                    {project.tags.slice(0, 2).map(tag => (
+                                        <span key={tag} className="text-[8px] md:text-[9px] font-black px-2 py-1 rounded bg-white/5 text-white/40 border border-white/10 uppercase">
+                                            {tag}
+                                        </span>
                                     ))}
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     ))}
                 </div>
             </div>

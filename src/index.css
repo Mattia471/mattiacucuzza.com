@@ -1,1 +1,29 @@
 @import "tailwindcss";
+
+/* Animazione del movimento */
+@keyframes marquee-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.marquee-container {
+    display: flex;
+    width: max-content; /* Importante: permette al contenuto di estendersi oltre lo schermo */
+    animation: marquee-scroll 40s linear infinite;
+    will-change: transform; /* Ottimizzazione per la scheda video */
+}
+
+/* Opzionale: rallenta l'animazione quando l'utente passa il mouse */
+.marquee-container:hover {
+    animation-play-state: paused;
+}
+
+.marquee-text {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
