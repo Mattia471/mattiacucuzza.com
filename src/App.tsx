@@ -6,10 +6,12 @@ import {Footer} from './components/layout/Footer';
 import {Marquee} from "./components/sections/Marquee.tsx";
 import {Navbar} from "./components/layout/Navbar.tsx";
 import {ReferralBanner} from "./components/layout/ReferralBanner.tsx";
+import { Analytics } from "@vercel/analytics/next"
 
 function App() {
   return (
       <div className="bg-[#050505] min-h-screen">
+          <Analytics />
           <Navbar />
           <ReferralBanner />
         <Hero />
