@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
@@ -23,15 +24,39 @@ export const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    const root = document.documentElement;
+
+    if (isMenuOpen) {
+      root.classList.add('menu-open');
+    } else {
+      root.classList.remove('menu-open');
+    }
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsMenuOpen(false);
+      }
+    };
+
+    const onResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+    window.addEventListener('resize', onResize);
+
     return () => {
-      document.body.style.overflow = '';
+      root.classList.remove('menu-open');
+      window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('resize', onResize);
     };
   }, [isMenuOpen]);
 
   return (
     <header className={`site-nav ${scrolled ? 'is-scrolled' : ''}`}>
-      <div className="page-shell flex h-[74px] items-center justify-between gap-6">
+      <div className="nav-shell page-shell flex h-[74px] items-center justify-between gap-6">
         <a href="#top" className="group flex items-center gap-3" aria-label="Mattia Cucuzza home">
           <span className="brand-mark">MC</span>
           <div className="hidden leading-none sm:block">
@@ -80,7 +105,11 @@ export const Navbar = () => {
         </div>
       </div>
 
-      <div className={`mobile-menu ${isMenuOpen ? 'is-open' : ''}`}>
+      {createPortal(
+        <div
+          className={`mobile-menu ${isMenuOpen ? 'is-open' : ''}`}
+          aria-hidden={!isMenuOpen}
+        >
         <div className="page-shell flex h-full flex-col justify-between pb-10 pt-28">
           <div>
             <p className="mono-label text-lime">{t('nav.menu_label')}</p>
@@ -119,7 +148,9 @@ export const Navbar = () => {
             </a>
           </div>
         </div>
-      </div>
+      </div>,
+        document.body,
+      )}
     </header>
   );
 };

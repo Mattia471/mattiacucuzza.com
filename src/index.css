@@ -27,6 +27,12 @@ html {
   background: var(--surface);
 }
 
+html.menu-open,
+html.menu-open body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
 body {
   margin: 0;
   min-width: 320px;
@@ -268,7 +274,7 @@ video {
 .site-nav {
   position: fixed;
   inset: 0 0 auto;
-  z-index: 200;
+  z-index: 10000;
   border-bottom: 1px solid transparent;
   transition: background 250ms ease, border-color 250ms ease, backdrop-filter 250ms ease;
 }
@@ -277,6 +283,11 @@ video {
   border-color: rgba(255, 255, 255, 0.08);
   background: rgba(10, 10, 10, 0.76);
   backdrop-filter: blur(18px);
+}
+
+.nav-shell {
+  position: relative;
+  z-index: 220;
 }
 
 .brand-mark {
@@ -398,19 +409,36 @@ a:hover .brand-mark {
 .mobile-menu {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 9999;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   pointer-events: none;
+  visibility: hidden;
   opacity: 0;
   background: #0a0a0a;
   transform: translateY(-1.5rem);
-  transition: opacity 300ms ease, transform 400ms cubic-bezier(.2,.7,.2,1);
+  transition:
+    opacity 260ms ease,
+    transform 380ms cubic-bezier(.2,.7,.2,1),
+    visibility 0s linear 380ms;
 }
 
 .mobile-menu.is-open {
-  z-index: 190;
   pointer-events: auto;
+  visibility: visible;
   opacity: 1;
   transform: translateY(0);
+  transition:
+    opacity 260ms ease,
+    transform 380ms cubic-bezier(.2,.7,.2,1),
+    visibility 0s linear 0s;
+}
+
+.mobile-menu > .page-shell {
+  min-height: 100%;
+  min-height: 100dvh;
 }
 
 .mobile-nav-link {
