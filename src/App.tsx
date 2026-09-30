@@ -1,26 +1,32 @@
-import {Hero} from './components/sections/Hero';
-import {About} from './components/sections/About';
-import {Portfolio} from './components/sections/Portfolio';
-import {Pricing} from './components/sections/Pricing';
-import {Footer} from './components/layout/Footer';
-import {Marquee} from "./components/sections/Marquee.tsx";
-import {Navbar} from "./components/layout/Navbar.tsx";
-import {ReferralBanner} from "./components/layout/ReferralBanner.tsx";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from '@vercel/analytics/react';
+import { Navbar } from './components/layout/Navbar';
+import { ReferralBanner } from './components/layout/ReferralBanner';
+import { Footer } from './components/layout/Footer';
+import { Hero } from './components/sections/Hero';
+import { About } from './components/sections/About';
+import { Portfolio } from './components/sections/Portfolio';
+import { Capabilities } from './components/sections/Capabilities';
+import { Marquee } from './components/sections/Marquee';
+import { Pricing } from './components/sections/Pricing';
+import { CustomCursor } from './components/ui/CustomCursor';
 
 function App() {
   return (
-      <div className="bg-[#050505] min-h-screen">
-          <Analytics />
-          <Navbar />
-          <ReferralBanner />
+    <div id="top" className="min-h-screen bg-[#0a0a0a] text-white">
+      <Analytics />
+      <CustomCursor />
+      <Navbar />
+      <ReferralBanner />
+      <main>
         <Hero />
         <About />
         <Portfolio />
-        <Marquee/>
+        <Capabilities />
+        <Marquee />
         <Pricing />
-        <Footer />
-      </div>
+      </main>
+      <Footer />
+    </div>
   );
 }
 

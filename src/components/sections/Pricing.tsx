@@ -1,149 +1,130 @@
-import {Zap} from 'lucide-react';
-import {useTranslation} from 'react-i18next';
-import {Button} from '../ui/Button';
-import {useReferral} from "../../context/ReferralContext.tsx";
+import { ArrowUpRight, Check } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { useReferral } from '../../context/ReferralContext';
+import { Reveal } from '../ui/Reveal';
+
+type Plan = {
+  id: 'essential' | 'management' | 'custom';
+  price: string;
+};
 
 export const Pricing = () => {
-    const { t } = useTranslation();
-    const { discount, hasDiscount,referralCode } = useReferral();
+  const { t } = useTranslation();
+  const { discount, hasDiscount, referralCode } = useReferral();
 
-    // Calcola il prezzo finale o restituisce 'Quote'
-    const calculatePrice = (basePrice: string) => {
-        if (basePrice === 'Quote') return 'Quote';
-        const price = parseInt(basePrice);
-        if (hasDiscount) {
-            return (price * (1 - discount)).toFixed(0);
-        }
-        return basePrice;
-    };
+  const plans: Plan[] = [
+    { id: 'essential', price: '500' },
+    { id: 'management', price: '900' },
+    { id: 'custom', price: 'Quote' },
+  ];
 
-    const plans = [
-        {
-            id: "essential",
-            name: t('pricing.plans.essential.name'),
-            price: "500",
-            features: [
-                t('pricing.plans.essential.f1'),
-                t('pricing.plans.essential.f2'),
-                t('pricing.plans.essential.f3'),
-                t('pricing.plans.essential.f4'),
-                t('pricing.plans.essential.f5')
-            ],
-        },
-        {
-            id: "management",
-            name: t('pricing.plans.management.name'),
-            price: "900",
-            features: [
-                t('pricing.plans.management.f1'),
-                t('pricing.plans.management.f2'),
-                t('pricing.plans.management.f3'),
-                t('pricing.plans.management.f4'),
-                t('pricing.plans.management.f5'),
-            ],
-            popular: true,
-        },
-        {
-            id: "custom",
-            name: t('pricing.plans.custom.name'),
-            price: "Quote",
-            features: [
-                t('pricing.plans.custom.f1'),
-                t('pricing.plans.custom.f2'),
-                t('pricing.plans.custom.f3'),
-                t('pricing.plans.custom.f4'),
-                t('pricing.plans.custom.f5'),
-            ],
-        }
-    ];
+  const calculatePrice = (basePrice: string) => {
+    if (basePrice === 'Quote') return null;
+    const price = Number(basePrice);
+    return hasDiscount ? Math.round(price * (1 - discount)).toString() : basePrice;
+  };
 
-    // Funzione per generare il link mail dinamico con info sullo sconto
-    const generateMailLink = (planName: string) => {
-        const email = "cucuzzamattia47@gmail.com";
+  const generateMailLink = (planName: string) => {
+    const referralNote = hasDiscount
+      ? `\nCodice referral applicato: ${referralCode?.toUpperCase()}`
+      : '';
 
-        const referralNote = hasDiscount
-            ? `\n(Applicato codice sconto : ${referralCode?.toUpperCase()})`
-            : "";
-
-        const subject = encodeURIComponent(`Richiesta Progetto: ${planName}`);
-        const body = encodeURIComponent(
-            `Ciao Mattia,\n\nsono interessato al piano ${planName}.${referralNote}\nVorrei ricevere maggiori informazioni per iniziare a lavorare alla mia visione.\n\nGrazie!`
-        );
-
-        return `mailto:${email}?subject=${subject}&body=${body}`;
-    };
-
-    return (
-        <section id="pricing" className="py-32 px-6 border-t border-white/5 bg-[#050505]">
-            <div className="max-w-6xl mx-auto">
-                <div className="text-center mb-20 relative">
-
-                    <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4 italic text-white">
-                        {t('pricing.title')}
-                    </h2>
-                    <p className="text-zinc-500 uppercase tracking-widest text-[10px] font-bold italic">
-                        {t('pricing.subtitle')}
-                    </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 border border-white/10 rounded-[48px] overflow-hidden">
-                    {plans.map((pkg, i) => (
-                        <div
-                            key={i}
-                            className={`p-12 flex flex-col bg-[#050505] transition-all duration-500 group ${pkg.popular ? 'relative bg-zinc-900/30 shadow-[inset_0_0_80px_rgba(16,185,129,0.05)]' : ''}`}
-                        >
-                            {pkg.popular && (
-                                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-emerald-500 to-cyan-500" />
-                            )}
-
-                            <h3 className="text-2xl font-black uppercase italic tracking-tighter mb-8 text-white group-hover:text-emerald-400 transition-colors">
-                                {pkg.name}
-                            </h3>
-
-                            <div className="flex flex-col mb-10 min-h-[80px] justify-end">
-                                {/* Prezzo Originale (Barrato se c'è sconto) */}
-                                {hasDiscount && pkg.price !== 'Quote' && (
-                                    <span className="text-zinc-600 line-through text-lg font-bold mb-1 ml-1">
-                                        €{pkg.price}
-                                    </span>
-                                )}
-
-                                <div className="flex items-baseline gap-2 text-white">
-                                    <span className="text-6xl font-black tracking-tighter">
-                                        {pkg.price === 'Quote' ? '' : '€'}{calculatePrice(pkg.price)}
-                                    </span>
-                                    {pkg.price !== 'Quote' && (
-                                        <span className="text-zinc-600 text-[10px] font-black uppercase tracking-widest">
-                                            {t('pricing.base')}
-                                        </span>
-                                    )}
-                                </div>
-                            </div>
-
-                            <ul className="space-y-5 mb-12 flex-grow">
-                                {pkg.features.map((f, idx) => (
-                                    <li key={idx} className="text-zinc-400 text-[10px] uppercase font-bold tracking-widest flex items-center gap-3">
-                                        <Zap size={14} className="text-emerald-500 group-hover:scale-125 transition-transform" /> {f}
-                                    </li>
-                                ))}
-                            </ul>
-
-                            <Button
-                                variant={pkg.popular ? 'primary' : 'outline'}
-                                className="w-full text-[10px] tracking-[2px] font-black uppercase"
-                                href={generateMailLink(pkg.name)}
-                            >
-                                {pkg.price === 'Quote' ? t('pricing.cta_quote') : t('pricing.cta_standard')}
-                            </Button>
-                        </div>
-                    ))}
-                </div>
-
-                {/* Footer disclaimer per i prezzi */}
-                <p className="text-center mt-12 text-zinc-600 text-[9px] uppercase tracking-widest font-medium">
-                    * {t('pricing.disclaimer') || "Prices may vary based on specific requirements."}
-                </p>
-            </div>
-        </section>
+    const subject = encodeURIComponent(`Richiesta Progetto: ${planName}`);
+    const body = encodeURIComponent(
+      `Ciao Mattia,\n\nsono interessato al servizio ${planName}.${referralNote}\nVorrei raccontarti il mio progetto e capire come possiamo lavorare insieme.\n\nGrazie!`,
     );
+
+    return `mailto:cucuzzamattia47@gmail.com?subject=${subject}&body=${body}`;
+  };
+
+  return (
+    <section id="pricing" className="section-shell border-t border-white/10">
+      <div className="page-shell py-24 md:py-36">
+        <Reveal className="grid gap-8 md:grid-cols-[0.72fr_1.28fr] md:gap-16">
+          <div>
+            <p className="section-index">04 / Services</p>
+          </div>
+          <div>
+            <h2 className="section-title text-white">{t('pricing.title')}</h2>
+            <p className="mt-6 max-w-2xl text-base leading-8 text-white/50 md:text-lg">{t('pricing.subtitle')}</p>
+          </div>
+        </Reveal>
+
+        {hasDiscount && (
+          <Reveal delay={80} className="mt-12 md:ml-[36%] md:mt-16">
+            <div className="inline-flex items-center gap-3 rounded-full border border-lime/35 bg-lime/10 px-4 py-2 text-lime">
+              <span className="h-2 w-2 rounded-full bg-lime" />
+              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.15em]">
+                {t('pricing.discount', { discount: Math.round(discount * 100), code: referralCode?.toUpperCase() })}
+              </span>
+            </div>
+          </Reveal>
+        )}
+
+        <div className="mt-16 border-t border-white/10 md:mt-24">
+          {plans.map((plan, index) => {
+            const planName = t(`pricing.plans.${plan.id}.name`);
+            const finalPrice = calculatePrice(plan.price);
+            const features = [1, 2, 3, 4, 5].map((feature) => t(`pricing.plans.${plan.id}.f${feature}`));
+
+            return (
+              <Reveal key={plan.id} delay={index * 70}>
+                <article className="service-row group grid gap-8 py-8 md:grid-cols-[0.72fr_1.28fr] md:gap-16 md:py-10">
+                  <div className="flex items-start gap-6">
+                    <span className="mono-label text-white/30">0{index + 1}</span>
+                    <div>
+                      <h3 className="text-3xl font-semibold uppercase tracking-[-0.045em] text-white md:text-5xl">{planName}</h3>
+                      <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-white/35">
+                        {t(`pricing.plans.${plan.id}.label`)}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-start">
+                    <div>
+                      <ul className="grid gap-3 sm:grid-cols-2">
+                        {features.map((feature) => (
+                          <li key={feature} className="flex items-start gap-3 text-sm leading-6 text-white/55">
+                            <Check size={15} className="mt-1 shrink-0 text-lime" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="min-w-[190px] md:text-right">
+                      {plan.price === 'Quote' ? (
+                        <p className="text-3xl font-semibold tracking-[-0.05em] text-white">{t('pricing.on_request')}</p>
+                      ) : (
+                        <div>
+                          {hasDiscount && (
+                            <p className="mb-1 text-sm font-semibold text-white/30 line-through">€{plan.price}</p>
+                          )}
+                          <p className="text-4xl font-semibold tracking-[-0.06em] text-white md:text-5xl">€{finalPrice}</p>
+                          <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.15em] text-white/30">{t('pricing.from')}</p>
+                        </div>
+                      )}
+
+                      <a
+                        href={generateMailLink(planName)}
+                        className="mt-6 inline-flex items-center gap-2 border-b border-white/30 pb-1 text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:border-lime hover:text-lime"
+                        data-cursor="MAIL"
+                      >
+                        {t('pricing.cta')}
+                        <ArrowUpRight size={15} />
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              </Reveal>
+            );
+          })}
+        </div>
+
+        <p className="mt-10 max-w-xl font-mono text-[9px] uppercase leading-5 tracking-[0.13em] text-white/25">
+          {t('pricing.disclaimer')}
+        </p>
+      </div>
+    </section>
+  );
 };

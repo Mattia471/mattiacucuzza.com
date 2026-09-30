@@ -1,31 +1,20 @@
+import { useTranslation } from 'react-i18next';
+
 export const Marquee = () => {
-    return (
-        <div className="overflow-hidden py-10 md:py-24 border-y border-white/5 bg-[#050505] relative">
-            {/* Sfumature ai lati per l'effetto dissolvenza */}
-            <div
-                className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none"></div>
-            <div
-                className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none"></div>
+  const { t } = useTranslation();
+  const words = [t('marquee.item1'), t('marquee.item2'), t('marquee.item3'), t('marquee.item4')];
+  const repeated = [...words, ...words];
 
-            <div className="marquee-container">
-                {/* Blocco 1 */}
-                <div className="marquee-text">
-                    <h2 className="text-[12vw] font-black leading-none tracking-tighter text-zinc-300/40 uppercase select-none flex items-center">
-                        SCALABILITY <span className="mx-10 text-emerald-500">•</span>
-                        AUTOMATION <span className="mx-10 text-emerald-500">•</span>
-                        PERFORMANCE <span className="mx-10 text-emerald-500">•</span>&nbsp;
-                    </h2>
-                </div>
-
-                {/* Blocco 2 (Necessario per il loop infinito senza scatti) */}
-                <div className="marquee-text">
-                    <h2 className="text-[12vw] font-black leading-none tracking-tighter text-zinc-300/40 uppercase select-none flex items-center">
-                        SCALABILITY <span className="mx-10 text-emerald-500">•</span>
-                        AUTOMATION <span className="mx-10 text-emerald-500">•</span>
-                        PERFORMANCE <span className="mx-10 text-emerald-500">•</span>&nbsp;
-                    </h2>
-                </div>
-            </div>
-        </div>
-    )
-}
+  return (
+    <div className="overflow-hidden border-y border-white/10 bg-lime py-5 text-black md:py-7">
+      <div className="marquee-container">
+        {repeated.map((word, index) => (
+          <div key={`${word}-${index}`} className="marquee-text px-5 md:px-8">
+            <span className="text-3xl font-black uppercase tracking-[-0.05em] md:text-5xl">{word}</span>
+            <span className="ml-8 text-xl md:ml-12 md:text-3xl">✦</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};

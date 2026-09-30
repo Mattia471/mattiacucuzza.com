@@ -1,112 +1,75 @@
-import {ArrowUpRight, ExternalLink} from 'lucide-react';
-import {useTranslation} from "react-i18next";
+import { ArrowUpRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { projects } from '../../data/projects';
+import { Reveal } from '../ui/Reveal';
+import { ProjectVideo } from '../ui/ProjectVideo';
 
 export const Portfolio = () => {
-    const {t} = useTranslation();
-    const projects = [
-        {
-            title: "New Generation Academy",
-            cat: t('portfolio.projects.nga.cat'),
-            img: "/project_1.png",
-            tags: ["React", "Next.js"],
-            align: "start",
-            link: "https://newgenerationacademy.it/",
-            desc: t('portfolio.projects.nga.desc')
-        },
-        {
-            title: "Reverse Wind Portal",
-            cat: t('portfolio.projects.reverse.cat'),
-            img: "/project_3.png",
-            tags: ["Auth", "Node.js"],
-            align: "end",
-            link: "https://app.reversewind.it/login",
-            note: t('portfolio.projects.reverse.note'),
-            desc: t('portfolio.projects.reverse.desc')
-        },
-        {
-            title: "Late Night Hoop Shop",
-            cat: t('portfolio.projects.hoop.cat'),
-            img: "/project_2.png",
-            tags: ["React", "Vercel"],
-            align: "start",
-            link: "https://late-night-hoop-shop.vercel.app/",
-            desc: t('portfolio.projects.hoop.desc')
-        },
-    ];
+  const { t } = useTranslation();
 
-    return (
-        <section id="work" className="py-24 md:py-32 px-4 md:px-6 bg-[#050505]">
-            <div className="max-w-7xl mx-auto">
-                <div className="text-center mb-16 md:mb-24">
-                    <p className="text-emerald-500 text-[10px] font-black uppercase tracking-[5px] mb-4">{t('portfolio.badge')}</p>
-                    <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter italic leading-[0.8] text-white">
-                        {t('portfolio.title')}
-                    </h2>
+  return (
+    <section id="work" className="section-shell border-t border-white/10">
+      <div className="page-shell py-24 md:py-36">
+        <Reveal className="grid gap-8 md:grid-cols-[0.72fr_1.28fr] md:gap-16">
+          <div>
+            <p className="section-index">02 / Selected work</p>
+          </div>
+          <div className="flex items-end justify-between gap-8">
+            <h2 className="section-title max-w-4xl text-white">{t('portfolio.title')}</h2>
+            <span className="hidden pb-2 font-mono text-xs uppercase tracking-[0.18em] text-white/30 md:block">
+              03 {t('portfolio.projects_count')}
+            </span>
+          </div>
+        </Reveal>
+
+        <div className="mt-16 space-y-20 md:mt-24 md:space-y-32">
+          {projects.map((project, index) => (
+            <Reveal key={project.id} delay={index * 80}>
+              <article className="project-block group">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                  data-cursor={t('portfolio.view')}
+                >
+                  <div className="project-media relative overflow-hidden rounded-[1.25rem] border border-white/10 bg-white/[0.025] md:rounded-[2rem]">
+                    <ProjectVideo
+                      src={project.video}
+                      poster={project.image}
+                      alt={project.title}
+                      className="h-full w-full object-cover transition duration-[900ms] ease-out group-hover:scale-[1.035]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-70 transition duration-500 group-hover:opacity-30" />
+                    <div className="absolute right-5 top-5 flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-black/50 text-white backdrop-blur transition duration-300 group-hover:bg-lime group-hover:text-black md:right-8 md:top-8 md:h-16 md:w-16">
+                      <ArrowUpRight size={22} />
+                    </div>
+                  </div>
+                </a>
+
+                <div className="mt-6 grid gap-6 border-t border-white/10 pt-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:pt-8">
+                  <div className="flex items-start gap-5">
+                    <span className="mono-label text-lime">0{index + 1}</span>
+                    <div>
+                      <h3 className="text-2xl font-semibold tracking-[-0.04em] text-white md:text-4xl">{project.title}</h3>
+                      <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.18em] text-white/35">{project.year}</p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <p className="max-w-2xl text-sm leading-7 text-white/55 md:text-base">{t(`portfolio.projects.${project.id}.desc`)}</p>
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <span key={tag} className="tag-chip">{tag}</span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-x-20 md:gap-y-32">
-                    {projects.map((project, i) => (
-                        <a
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            key={i}
-                            className={`group block relative ${project.align === 'end' ? 'md:mt-40' : ''}`}
-                        >
-                            {/* Card Immagine con Effetto Hover */}
-                            <div className="relative aspect-[16/10] bg-zinc-900 rounded-2xl md:rounded-[40px] overflow-hidden border border-white/5 shadow-2xl transition-all duration-500 group-hover:border-emerald-500/50 group-hover:shadow-emerald-500/10">
-                                <img
-                                    src={project.img}
-                                    alt={project.title}
-                                    className="w-full h-full object-cover transition-all duration-700 scale-[1.01] group-hover:scale-110 blur-0 group-hover:blur-[2px] opacity-80 group-hover:opacity-40"
-                                />
-
-                                {/* Overlay Content (visibile bene al passaggio mouse o focus) */}
-                                <div className="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-black/20 backdrop-blur-sm">
-                                    <p className="text-white text-center px-8 text-sm md:text-base font-medium max-w-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                        {project.desc}
-                                    </p>
-                                    <div className="mt-6 w-12 h-12 rounded-full bg-emerald-500 text-black flex items-center justify-center translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
-                                        <ArrowUpRight size={24} strokeWidth={3} />
-                                    </div>
-                                </div>
-
-                                {/* Label Mobile (Sempre visibile solo su mobile per aiutare l'utente) */}
-                                <div className="absolute bottom-4 right-4 md:hidden bg-emerald-500 p-2 rounded-full text-black">
-                                    <ExternalLink size={16} />
-                                </div>
-                            </div>
-
-                            {/* Info Sotto l'immagine */}
-                            <div className="mt-6 md:mt-8 flex justify-between items-end px-2">
-                                <div className="space-y-1">
-                                    <div className="flex items-center gap-2">
-                                        <h3 className="text-2xl md:text-3xl font-black uppercase italic tracking-tighter text-white group-hover:text-emerald-400 transition-colors">
-                                            {project.title}
-                                        </h3>
-                                        {project.note && (
-                                            <span className="hidden md:block text-[7px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded-full font-black uppercase tracking-tighter">
-                                                {project.note}
-                                            </span>
-                                        )}
-                                    </div>
-                                    <p className="text-zinc-500 text-[10px] md:text-xs uppercase font-bold tracking-[3px]">
-                                        {project.cat}
-                                    </p>
-                                </div>
-
-                                <div className="flex gap-1.5 mb-1">
-                                    {project.tags.slice(0, 2).map(tag => (
-                                        <span key={tag} className="text-[8px] md:text-[9px] font-black px-2 py-1 rounded bg-white/5 text-white/40 border border-white/10 uppercase">
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                        </a>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
