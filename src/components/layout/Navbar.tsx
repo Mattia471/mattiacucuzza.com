@@ -57,12 +57,12 @@ export const Navbar = () => {
   return (
     <header className={`site-nav ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="nav-shell page-shell flex h-[74px] items-center justify-between gap-6">
-        <a href="#top" className="group flex items-center gap-3" aria-label="Mattia Cucuzza home">
-          <span className="brand-mark">MC</span>
-          <div className="hidden leading-none sm:block">
-            <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-white">Mattia Cucuzza</p>
-            <p className="mt-1 font-mono text-[8px] uppercase tracking-[0.2em] text-white/35">Creative developer</p>
-          </div>
+        <a href="#top" className="group flex items-center" aria-label="Mattia Cucuzza home">
+          <img
+            src="/logo-light.png"
+            alt="Mattia Cucuzza"
+            className="site-logo site-logo--header"
+          />
         </a>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Main navigation">

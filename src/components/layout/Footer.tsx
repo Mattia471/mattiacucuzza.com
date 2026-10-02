@@ -26,7 +26,12 @@ export const Footer = () => {
     <footer id="contact" className="border-t border-white/10 bg-lime text-black">
       <div className="page-shell py-16 md:py-24">
         <Reveal>
-          <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-black/55">05 / Contact</p>
+          <img
+            src="/logo-dark.png"
+            alt="Mattia Cucuzza"
+            className="site-logo site-logo--footer"
+          />
+          <p className="mt-6 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-black/55">05 / Contact</p>
           <a
             href="mailto:cucuzzamattia47@gmail.com"
             className="footer-cta group mt-8 block border-b border-black/25 pb-8 md:mt-12 md:pb-12"
