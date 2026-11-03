@@ -17,7 +17,7 @@ export const Portfolio = () => {
           <div className="flex items-end justify-between gap-8">
             <h2 className="section-title max-w-4xl text-white">{t('portfolio.title')}</h2>
             <span className="hidden pb-2 font-mono text-xs uppercase tracking-[0.18em] text-white/30 md:block">
-              03 {t('portfolio.projects_count')}
+              {String(projects.length).padStart(2, '0')} {t('portfolio.projects_count')}
             </span>
           </div>
         </Reveal>

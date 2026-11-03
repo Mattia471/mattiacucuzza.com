@@ -31,7 +31,7 @@ export const ProjectVideo = ({ src, poster, alt, className = '' }: ProjectVideoP
   }, [src, videoFailed]);
 
   if (!src || videoFailed) {
-    return <img src={poster} alt={alt} className={className} />;
+    return <img src={poster} alt={alt} loading="lazy" decoding="async" className={className} />;
   }
 
   return (

@@ -45,6 +45,10 @@ const resources = {
         projects_count: 'projects',
         view: 'VIEW',
         projects: {
+          synchro: { desc: 'A multi-location management platform for dance schools, connecting class schedules, memberships, attendance and payments in one mobile-ready workspace.' },
+          hospitality: { desc: 'A refined B2B hospitality showcase for partners, services and completed projects, with map-based discovery and a clear editorial design.' },
+          house: { desc: 'A welcoming, mobile-first holiday-home experience with a guided booking preview, property gallery and a streamlined path to availability.' },
+          ritmo: { desc: 'A mobile-first social concept for the Latin dance community, bringing local events, participation requests, maps and conversations together.' },
           nga: { desc: 'A digital presence for a dance academy, designed to make events, classes and the brand itself feel immediate and energetic.' },
           reverse: { desc: 'Core product architecture for a B2B portal with authentication, protected areas and referral-driven business logic.' },
           hoop: { desc: 'A streetwear and basketball commerce experience with a strong event identity, streamlined product discovery and order flow.' },
@@ -177,6 +181,10 @@ const resources = {
         projects_count: 'progetti',
         view: 'APRI',
         projects: {
+          synchro: { desc: 'Gestionale multi-sede per scuole di ballo: corsi, calendario, iscrizioni, presenze e pagamenti in un’unica esperienza accessibile anche da mobile.' },
+          hospitality: { desc: 'Sito vetrina B2B per il mondo hospitality, con partner, servizi, realizzazioni e mappa interattiva, curato nei contenuti e nell’identità visiva.' },
+          house: { desc: 'Esperienza mobile-first per una casa vacanze a Roma, con galleria degli ambienti, ricerca disponibilità e percorso di prenotazione dimostrativo.' },
+          ritmo: { desc: 'Concept social mobile-first per la community dei balli caraibici, tra eventi in zona, richieste di partecipazione, mappe e conversazioni.' },
           nga: { desc: 'Una presenza digitale per un’accademia di ballo, progettata per rendere eventi, corsi e identità del brand immediati ed energici.' },
           reverse: { desc: 'Architettura di prodotto per un portale B2B con autenticazione, aree protette e logiche di business basate su referral.' },
           hoop: { desc: 'Esperienza commerce streetwear e basket con forte identità da evento, scoperta prodotto immediata e flusso ordine semplificato.' },
