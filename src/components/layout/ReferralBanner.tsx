@@ -1,6 +1,6 @@
 import { Sparkles } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { useReferral } from '../../context/ReferralContext';
+import { useReferral } from '../../context/referral';
 
 export const ReferralBanner = () => {
   const { hasDiscount, referralCode } = useReferral();

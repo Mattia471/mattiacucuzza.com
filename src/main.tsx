@@ -1,11 +1,11 @@
-import ReactDOM from 'react-dom/client'
-import './index.css'
-import './i18n'
-import App from './App'
-import {ReferralProvider} from "./context/ReferralContext.tsx";
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import './i18n';
+import App from './App';
+import { ReferralProvider } from './context/ReferralContext';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-       <ReferralProvider>
-              <App />
-         </ReferralProvider>
-)
+  <ReferralProvider>
+    <App />
+  </ReferralProvider>,
+);

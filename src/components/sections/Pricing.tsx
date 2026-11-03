@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { FormEvent } from "react";
 import { ArrowUpRight, ChevronDown, Sparkles } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { useReferral } from "../../context/ReferralContext";
+import { useReferral } from "../../context/referral";
 import { Reveal } from "../ui/Reveal";
 
 type BriefForm = {

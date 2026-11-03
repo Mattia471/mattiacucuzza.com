@@ -1,12 +1,36 @@
 {
-  "name": "my-personal-portfolio",
+  "name": "mattiacucuzza-portfolio",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Official personal portfolio and frontend showcase of Mattia Cucuzza.",
+  "author": "Mattia Cucuzza",
+  "homepage": "https://mattiacucuzzacom.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mattia471/mattiacucuzza.com.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Mattia471/mattiacucuzza.com/issues"
+  },
+  "keywords": [
+    "portfolio",
+    "react",
+    "typescript",
+    "vite",
+    "tailwindcss",
+    "frontend",
+    "creative-development"
+  ],
   "type": "module",
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "typecheck": "tsc -b --pretty false",
+    "check": "eslint . && tsc -b --pretty false && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
