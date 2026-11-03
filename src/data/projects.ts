@@ -1,47 +1,51 @@
-export type ProjectId = 'nga' | 'reverse' | 'hoop' | 'synchro' | 'hospitality' | 'house' | 'ritmo';
+export type ProjectId = 'nga' | 'reverse' | 'hoop' | 'previewA' | 'previewB' | 'previewC' | 'previewD';
 
-export type Project = {
+type ProjectBase = {
   id: ProjectId;
   title: string;
   year: string;
   image: string;
   video?: string;
-  link: string;
   tags: string[];
 };
 
+export type Project = ProjectBase & (
+  | { comingSoon: true; link?: never }
+  | { comingSoon?: false; link: string }
+);
+
 export const projects: Project[] = [
   {
-    id: 'synchro',
-    title: 'Synchro Step',
+    id: 'previewA',
+    title: 'PRIVATE PROJECT / 01',
     year: '2026',
-    image: '/previews/synchro-step.webp',
-    link: 'https://synchro-step.vercel.app/',
-    tags: ['React', 'TypeScript', 'SaaS', 'Supabase'],
+    image: '/previews/teaser-01.webp',
+    comingSoon: true,
+    tags: ['React', 'TypeScript', 'In progress'],
   },
   {
-    id: 'hospitality',
-    title: "D'Anzi Hospitality Hub",
+    id: 'previewB',
+    title: 'PRIVATE PROJECT / 02',
     year: '2026',
-    image: '/previews/danzi-hospitality.webp',
-    link: 'https://danzi-hospitality-hub.vercel.app/',
-    tags: ['React', 'TypeScript', 'Hospitality'],
+    image: '/previews/teaser-02.webp',
+    comingSoon: true,
+    tags: ['React', 'Design', 'In progress'],
   },
   {
-    id: 'house',
-    title: "D'Anzi House",
+    id: 'previewC',
+    title: 'PRIVATE PROJECT / 03',
     year: '2026',
-    image: '/previews/danzi-house.webp',
-    link: 'https://danzi-home.vercel.app/',
-    tags: ['React', 'Booking UX', 'Mobile-first'],
+    image: '/previews/teaser-03.webp',
+    comingSoon: true,
+    tags: ['React', 'Mobile-first', 'In progress'],
   },
   {
-    id: 'ritmo',
-    title: 'Ritmo Social',
+    id: 'previewD',
+    title: 'PRIVATE PROJECT / 04',
     year: '2026',
-    image: '/previews/ritmo-social.webp',
-    link: 'https://ritmo-social-theta.vercel.app/',
-    tags: ['React', 'PWA', 'Community', 'Mobile-first'],
+    image: '/previews/teaser-04.webp',
+    comingSoon: true,
+    tags: ['React', 'Experience', 'In progress'],
   },
   {
     id: 'nga',
