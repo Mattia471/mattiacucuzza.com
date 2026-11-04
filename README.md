@@ -4,7 +4,7 @@
 
 **Personal portfolio and frontend showcase built around code, motion and digital product design.**
 
-[Live website](https://mattiacucuzza.com) · [Italian domain](https://mattiacucuzza.it) · [Report an issue](https://github.com/Mattia471/mattiacucuzza.com/issues)
+[Live website](https://mattiacucuzza.com) · [Alternate domain](https://mattiacucuzza.it) · [Report an issue](https://github.com/Mattia471/mattiacucuzza.com/issues)
 
 ![CI](https://github.com/Mattia471/mattiacucuzza.com/actions/workflows/ci.yml/badge.svg?branch=develop)
 ![React](https://img.shields.io/badge/React-19-20232a?logo=react&logoColor=61DAFB)
@@ -32,7 +32,7 @@ The public portfolio includes both launched work and intentionally obscured prev
 - **Italian / English** localization with i18next
 - **Responsive navigation** with a portal-based fullscreen mobile menu
 - **Custom cursor** and scroll reveal interactions
-- **Video-enabled project showcase** with poster fallbacks
+- **Phone-style project showcase** with video previews and poster fallbacks
 - **Private project previews** for unreleased work
 - **Referral/reference context** persisted for the current session
 - **Project brief** that prepares a pre-filled email without storing form data
@@ -70,7 +70,7 @@ The public portfolio includes both launched work and intentionally obscured prev
 │   │   ├── sections/          # homepage sections
 │   │   └── ui/                # cursor, reveal, project media, primitives
 │   ├── context/
-│   │   └── ReferralContext.tsx
+│   │   ├── ReferralContext.tsx\n│   │   └── referral.ts
 │   ├── data/
 │   │   └── projects.ts        # portfolio project registry
 │   ├── App.tsx
