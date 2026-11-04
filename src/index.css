@@ -321,6 +321,239 @@ video {
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
+
+.iphone-scroll-viewport {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #080808;
+}
+
+.iphone-scroll-track {
+  position: relative;
+  width: 100%;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.iphone-scroll-hero {
+  position: relative;
+  height: 100%;
+  min-height: 100%;
+  aspect-ratio: 390 / 844;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+.iphone-scroll-hero > img,
+.iphone-scroll-hero > video {
+  min-height: 100%;
+}
+
+.iphone-scroll-hero-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.05) 35%, rgba(0, 0, 0, 0.74) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.14), transparent 35%);
+}
+
+.iphone-scroll-hero-copy {
+  position: absolute;
+  left: 1.2rem;
+  right: 1.2rem;
+  bottom: 2.1rem;
+  z-index: 2;
+}
+
+.iphone-scroll-hero-copy span,
+.iphone-scroll-kicker {
+  display: block;
+  font-family: "DM Mono", ui-monospace, monospace;
+  font-size: 6px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--lime);
+}
+
+.iphone-scroll-hero-copy strong {
+  display: block;
+  margin-top: 0.35rem;
+  max-width: 88%;
+  color: white;
+  font-size: clamp(0.95rem, 2.6vw, 1.35rem);
+  font-weight: 650;
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+}
+
+.iphone-scroll-copy {
+  min-height: 58%;
+  padding: 1.65rem 1.15rem 1.35rem;
+  color: white;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(200, 255, 61, 0.08), transparent 45%),
+    #0d0d0d;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.iphone-scroll-copy h4 {
+  margin: 0.5rem 0 0;
+  font-size: clamp(1.05rem, 3vw, 1.45rem);
+  font-weight: 650;
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+}
+
+.iphone-scroll-copy p {
+  margin: 1rem 0 0;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 8px;
+  line-height: 1.65;
+}
+
+.iphone-scroll-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.85rem;
+}
+
+.iphone-scroll-tags span {
+  padding: 0.32rem 0.42rem;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.025);
+  font-family: "DM Mono", ui-monospace, monospace;
+  font-size: 5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.iphone-scroll-detail {
+  position: relative;
+  height: 78%;
+  min-height: 78%;
+  overflow: hidden;
+  background: #050505;
+}
+
+.iphone-scroll-detail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 72% center;
+  transform: scale(1.15);
+}
+
+.project-block:nth-child(even) .iphone-scroll-detail img {
+  object-position: 28% center;
+}
+
+.iphone-scroll-detail-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.62));
+}
+
+.iphone-scroll-end {
+  display: flex;
+  min-height: 19%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.15rem 1.5rem;
+  color: #050505;
+  background: var(--lime);
+  font-family: "DM Mono", ui-monospace, monospace;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.iphone-scroll-end span:last-child {
+  font-size: 1rem;
+}
+
+.iphone-scrollbar {
+  position: absolute;
+  top: 2.5rem;
+  right: 0.38rem;
+  bottom: 1.65rem;
+  z-index: 5;
+  width: 2px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.iphone-scrollbar i {
+  display: block;
+  width: 100%;
+  height: 22%;
+  border-radius: inherit;
+  background: var(--lime);
+  transform: translateY(0);
+  will-change: transform;
+}
+
+@keyframes iphone-content-scroll {
+  0%,
+  10% {
+    transform: translate3d(0, 0, 0);
+  }
+  46%,
+  62% {
+    transform: translate3d(0, -47%, 0);
+  }
+  90%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes iphone-scroll-thumb {
+  0%,
+  10% {
+    transform: translateY(0);
+  }
+  46%,
+  62% {
+    transform: translateY(355%);
+  }
+  90%,
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-block:not(:has(.project-device-stage.is-private)):hover .iphone-scroll-track {
+    animation: iphone-content-scroll 8.5s cubic-bezier(0.62, 0, 0.28, 1) infinite;
+  }
+
+  .project-block:not(:has(.project-device-stage.is-private)):hover .iphone-scrollbar i {
+    animation: iphone-scroll-thumb 8.5s cubic-bezier(0.62, 0, 0.28, 1) infinite;
+  }
+}
+
+@media (hover: none) {
+  .reveal.is-visible .project-block:not(:has(.project-device-stage.is-private)) .iphone-scroll-track {
+    animation: iphone-content-scroll 8.5s cubic-bezier(0.62, 0, 0.28, 1) 1 both;
+  }
+
+  .reveal.is-visible .project-block:not(:has(.project-device-stage.is-private)) .iphone-scrollbar i {
+    animation: iphone-scroll-thumb 8.5s cubic-bezier(0.62, 0, 0.28, 1) 1 both;
+  }
+}
+
 .iphone-screen-shade {
   position: absolute;
   inset: 0;
