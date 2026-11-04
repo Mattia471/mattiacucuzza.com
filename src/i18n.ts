@@ -49,6 +49,13 @@ const resources = {
         revealSoon: 'Details will be revealed soon',
         privateAlt: 'Unannounced project preview',
         comingSoonDescription: 'An upcoming digital experience currently under wraps. The project identity and public link will be shared after the official launch.',
+        phone: {
+          selected: 'Selected work',
+          preview: 'Project preview',
+          copy: 'Design, engineering and interaction working as one digital experience.',
+          explore: 'Explore project',
+          mobilePreview: 'Mobile preview',
+        },
         projects: {
           nga: { desc: 'A digital presence for a dance academy, designed to make events, classes and the brand itself feel immediate and energetic.' },
           reverse: { desc: 'Core product architecture for a B2B portal with authentication, protected areas and referral-driven business logic.' },
@@ -186,6 +193,13 @@ const resources = {
         revealSoon: 'I dettagli saranno svelati prossimamente',
         privateAlt: 'Anteprima di un progetto non ancora annunciato',
         comingSoonDescription: 'Un nuovo progetto digitale è in fase di sviluppo. Identità e link pubblico saranno svelati soltanto dopo il lancio ufficiale.',
+        phone: {
+          selected: 'Progetto selezionato',
+          preview: 'Anteprima progetto',
+          copy: 'Design, sviluppo e interazione lavorano insieme come un’unica esperienza digitale.',
+          explore: 'Esplora progetto',
+          mobilePreview: 'Anteprima mobile',
+        },
         projects: {
           nga: { desc: 'Una presenza digitale per un’accademia di ballo, progettata per rendere eventi, corsi e identità del brand immediati ed energici.' },
           reverse: { desc: 'Architettura di prodotto per un portale B2B con autenticazione, aree protette e logiche di business basate su referral.' },

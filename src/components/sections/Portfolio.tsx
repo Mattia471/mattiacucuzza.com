@@ -25,7 +25,7 @@ export const Portfolio = () => {
         <div className="mt-16 space-y-20 md:mt-24 md:space-y-32">
           {projects.map((project, index) => (
             <Reveal key={project.id} delay={index * 80}>
-              <article className="project-block group">
+              <article className={`project-block group ${project.comingSoon ? 'is-coming-soon' : ''}`}>
                 <div className="relative">
                   <div
                     className={`project-media project-device-stage relative overflow-hidden border border-white/10 bg-white/[0.025] ${project.comingSoon ? 'is-private' : ''}`}
@@ -42,17 +42,55 @@ export const Portfolio = () => {
                     <div className="iphone-preview" aria-hidden={project.comingSoon}>
                       <div className="iphone-frame">
                         <div className="iphone-screen">
-                          <ProjectVideo
-                            src={project.video}
-                            poster={project.image}
-                            alt={project.comingSoon ? t('portfolio.privateAlt') : project.title}
-                            className={
-                              'h-full w-full object-cover object-top ' +
-                              (project.comingSoon
-                                ? 'scale-[1.08] blur-[6px] brightness-75'
-                                : 'transition duration-[900ms] ease-out group-hover:scale-[1.025]')
-                            }
-                          />
+                          <div className="iphone-scroll-viewport">
+                            <div className="iphone-scroll-track">
+                              <div className="iphone-scroll-hero">
+                                <ProjectVideo
+                                  src={project.video}
+                                  poster={project.image}
+                                  alt={project.comingSoon ? t('portfolio.privateAlt') : project.title}
+                                  className={
+                                    'h-full w-full object-cover object-center ' +
+                                    (project.comingSoon
+                                      ? 'scale-[1.08] blur-[6px] brightness-75'
+                                      : '')
+                                  }
+                                />
+                                <div className="iphone-scroll-hero-shade" aria-hidden="true" />
+                                {!project.comingSoon && (
+                                  <div className="iphone-scroll-hero-copy">
+                                    <span>{t('portfolio.phone.selected')} · {project.year}</span>
+                                    <strong>{project.title}</strong>
+                                  </div>
+                                )}
+                              </div>
+
+                              {!project.comingSoon && (
+                                <>
+                                  <div className="iphone-scroll-copy">
+                                    <span className="iphone-scroll-kicker">{t('portfolio.phone.preview')}</span>
+                                    <h4>{project.title}</h4>
+                                    <div className="iphone-scroll-tags">
+                                      {project.tags.map((tag) => (
+                                        <span key={tag}>{tag}</span>
+                                      ))}
+                                    </div>
+                                    <p>{t('portfolio.phone.copy')}</p>
+                                  </div>
+
+                                  <div className="iphone-scroll-detail">
+                                    <img src={project.image} alt="" aria-hidden="true" />
+                                    <div className="iphone-scroll-detail-shade" aria-hidden="true" />
+                                  </div>
+
+                                  <div className="iphone-scroll-end">
+                                    <span>{t('portfolio.phone.explore')}</span>
+                                    <span aria-hidden="true">↗</span>
+                                  </div>
+                                </>
+                              )}
+                            </div>
+                          </div>
 
                           <div className="iphone-screen-shade" aria-hidden="true" />
                           <div className="iphone-statusbar" aria-hidden="true">
@@ -65,6 +103,7 @@ export const Portfolio = () => {
                           </div>
                           <div className="iphone-dynamic-island" aria-hidden="true" />
                           <div className="iphone-home-indicator" aria-hidden="true" />
+                          {!project.comingSoon && <div className="iphone-scrollbar" aria-hidden="true"><i /></div>}
 
                           {project.comingSoon && (
                             <div className="iphone-private-overlay">
@@ -93,7 +132,7 @@ export const Portfolio = () => {
                       <>
                         <div className="project-device-caption pointer-events-none absolute bottom-5 left-5 z-[3] hidden md:block">
                           <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-lime">
-                            Mobile preview
+                            {t('portfolio.phone.mobilePreview')}
                           </p>
                           <p className="mt-1 text-sm font-semibold text-white/80">{project.title}</p>
                         </div>
