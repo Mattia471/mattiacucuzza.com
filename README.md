@@ -4,7 +4,7 @@
 
 **Personal portfolio and frontend showcase built around code, motion and digital product design.**
 
-[Live website](https://mattiacucuzzacom.vercel.app) · [Report an issue](https://github.com/Mattia471/mattiacucuzza.com/issues)
+[Live website](https://mattiacucuzza.com) · [Italian domain](https://mattiacucuzza.it) · [Report an issue](https://github.com/Mattia471/mattiacucuzza.com/issues)
 
 ![CI](https://github.com/Mattia471/mattiacucuzza.com/actions/workflows/ci.yml/badge.svg?branch=develop)
 ![React](https://img.shields.io/badge/React-19-20232a?logo=react&logoColor=61DAFB)
@@ -194,7 +194,7 @@ This is a personal portfolio repository. The source is publicly visible for tran
 
 **Mattia Cucuzza**
 
-- Portfolio: https://mattiacucuzzacom.vercel.app
+- Portfolio: https://mattiacucuzza.com\n- Alternate domain: https://mattiacucuzza.it
 - GitHub: https://github.com/Mattia471
 - LinkedIn: https://www.linkedin.com/in/mattia-cucuzza/
 - Instagram: https://www.instagram.com/mattiacucuzza_/
