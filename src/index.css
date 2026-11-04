@@ -338,8 +338,7 @@ video {
 
 .iphone-scroll-hero {
   position: relative;
-  height: 100%;
-  min-height: 100%;
+  width: 100%;
   aspect-ratio: 390 / 844;
   overflow: hidden;
   background: #0a0a0a;
@@ -390,7 +389,8 @@ video {
 }
 
 .iphone-scroll-copy {
-  min-height: 58%;
+  width: 100%;
+  aspect-ratio: 390 / 400;
   padding: 1.65rem 1.15rem 1.35rem;
   color: white;
   background:
@@ -438,8 +438,8 @@ video {
 
 .iphone-scroll-detail {
   position: relative;
-  height: 78%;
-  min-height: 78%;
+  width: 100%;
+  aspect-ratio: 390 / 560;
   overflow: hidden;
   background: #050505;
 }
@@ -464,7 +464,8 @@ video {
 
 .iphone-scroll-end {
   display: flex;
-  min-height: 19%;
+  width: 100%;
+  aspect-ratio: 390 / 130;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
@@ -535,21 +536,21 @@ video {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .project-block:not(:has(.project-device-stage.is-private)):hover .iphone-scroll-track {
+  .project-block:not(.is-coming-soon):hover .iphone-scroll-track {
     animation: iphone-content-scroll 8.5s cubic-bezier(0.62, 0, 0.28, 1) infinite;
   }
 
-  .project-block:not(:has(.project-device-stage.is-private)):hover .iphone-scrollbar i {
+  .project-block:not(.is-coming-soon):hover .iphone-scrollbar i {
     animation: iphone-scroll-thumb 8.5s cubic-bezier(0.62, 0, 0.28, 1) infinite;
   }
 }
 
 @media (hover: none) {
-  .reveal.is-visible .project-block:not(:has(.project-device-stage.is-private)) .iphone-scroll-track {
+  .reveal.is-visible .project-block:not(.is-coming-soon) .iphone-scroll-track {
     animation: iphone-content-scroll 8.5s cubic-bezier(0.62, 0, 0.28, 1) 1 both;
   }
 
-  .reveal.is-visible .project-block:not(:has(.project-device-stage.is-private)) .iphone-scrollbar i {
+  .reveal.is-visible .project-block:not(.is-coming-soon) .iphone-scrollbar i {
     animation: iphone-scroll-thumb 8.5s cubic-bezier(0.62, 0, 0.28, 1) 1 both;
   }
 }
