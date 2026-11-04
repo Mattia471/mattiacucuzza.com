@@ -70,7 +70,8 @@ The public portfolio includes both launched work and intentionally obscured prev
 │   │   ├── sections/          # homepage sections
 │   │   └── ui/                # cursor, reveal, project media, primitives
 │   ├── context/
-│   │   ├── ReferralContext.tsx\n│   │   └── referral.ts
+│   │   ├── ReferralContext.tsx
+│   │   └── referral.ts
 │   ├── data/
 │   │   └── projects.ts        # portfolio project registry
 │   ├── App.tsx
@@ -194,7 +195,8 @@ This is a personal portfolio repository. The source is publicly visible for tran
 
 **Mattia Cucuzza**
 
-- Portfolio: https://mattiacucuzza.com\n- Alternate domain: https://mattiacucuzza.it
+- Portfolio: https://mattiacucuzza.com
+- Alternate domain: https://mattiacucuzza.it
 - GitHub: https://github.com/Mattia471
 - LinkedIn: https://www.linkedin.com/in/mattia-cucuzza/
 - Instagram: https://www.instagram.com/mattiacucuzza_/
