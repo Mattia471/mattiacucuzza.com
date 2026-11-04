@@ -42,17 +42,55 @@ export const Portfolio = () => {
                     <div className="iphone-preview" aria-hidden={project.comingSoon}>
                       <div className="iphone-frame">
                         <div className="iphone-screen">
-                          <ProjectVideo
-                            src={project.video}
-                            poster={project.image}
-                            alt={project.comingSoon ? t('portfolio.privateAlt') : project.title}
-                            className={
-                              'h-full w-full object-cover object-top ' +
-                              (project.comingSoon
-                                ? 'scale-[1.08] blur-[6px] brightness-75'
-                                : 'transition duration-[900ms] ease-out group-hover:scale-[1.025]')
-                            }
-                          />
+                          <div className="iphone-scroll-viewport">
+                            <div className="iphone-scroll-track">
+                              <div className="iphone-scroll-hero">
+                                <ProjectVideo
+                                  src={project.video}
+                                  poster={project.image}
+                                  alt={project.comingSoon ? t('portfolio.privateAlt') : project.title}
+                                  className={
+                                    'h-full w-full object-cover object-center ' +
+                                    (project.comingSoon
+                                      ? 'scale-[1.08] blur-[6px] brightness-75'
+                                      : '')
+                                  }
+                                />
+                                <div className="iphone-scroll-hero-shade" aria-hidden="true" />
+                                {!project.comingSoon && (
+                                  <div className="iphone-scroll-hero-copy">
+                                    <span>Selected work · {project.year}</span>
+                                    <strong>{project.title}</strong>
+                                  </div>
+                                )}
+                              </div>
+
+                              {!project.comingSoon && (
+                                <>
+                                  <div className="iphone-scroll-copy">
+                                    <span className="iphone-scroll-kicker">Project preview</span>
+                                    <h4>{project.title}</h4>
+                                    <div className="iphone-scroll-tags">
+                                      {project.tags.map((tag) => (
+                                        <span key={tag}>{tag}</span>
+                                      ))}
+                                    </div>
+                                    <p>Design, engineering and interaction working as one digital experience.</p>
+                                  </div>
+
+                                  <div className="iphone-scroll-detail">
+                                    <img src={project.image} alt="" aria-hidden="true" />
+                                    <div className="iphone-scroll-detail-shade" aria-hidden="true" />
+                                  </div>
+
+                                  <div className="iphone-scroll-end">
+                                    <span>Explore project</span>
+                                    <span aria-hidden="true">↗</span>
+                                  </div>
+                                </>
+                              )}
+                            </div>
+                          </div>
 
                           <div className="iphone-screen-shade" aria-hidden="true" />
                           <div className="iphone-statusbar" aria-hidden="true">
@@ -65,6 +103,7 @@ export const Portfolio = () => {
                           </div>
                           <div className="iphone-dynamic-island" aria-hidden="true" />
                           <div className="iphone-home-indicator" aria-hidden="true" />
+                          {!project.comingSoon && <div className="iphone-scrollbar" aria-hidden="true"><i /></div>}
 
                           {project.comingSoon && (
                             <div className="iphone-private-overlay">
