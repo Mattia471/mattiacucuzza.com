@@ -27,28 +27,57 @@ export const Portfolio = () => {
             <Reveal key={project.id} delay={index * 80}>
               <article className="project-block group">
                 <div className="relative">
-                  <div className="project-media relative overflow-hidden rounded-[1.25rem] border border-white/10 bg-white/[0.025] md:rounded-[2rem]">
-                    <ProjectVideo
-                      src={project.video}
-                      poster={project.image}
-                      alt={project.comingSoon ? t('portfolio.privateAlt') : project.title}
-                      className={
-                        'h-full w-full object-cover ' +
-                        (project.comingSoon
-                          ? 'scale-[1.08] blur-[9px] brightness-75'
-                          : 'transition duration-[900ms] ease-out group-hover:scale-[1.035]')
-                      }
+                  <div
+                    className={`project-media project-device-stage relative overflow-hidden border border-white/10 bg-white/[0.025] ${project.comingSoon ? 'is-private' : ''}`}
+                  >
+                    <img
+                      src={project.image}
+                      alt=""
+                      aria-hidden="true"
+                      className="project-stage-backdrop"
                     />
-                    <div
-                      className={
-                        'pointer-events-none absolute inset-0 ' +
-                        (project.comingSoon
-                          ? 'bg-gradient-to-t from-black/85 via-black/35 to-black/45'
-                          : 'bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-70 transition duration-500 group-hover:opacity-30')
-                      }
-                    />
+                    <div className="project-stage-grid" aria-hidden="true" />
+                    <div className="project-stage-vignette" aria-hidden="true" />
+
+                    <div className="iphone-preview" aria-hidden={project.comingSoon}>
+                      <div className="iphone-frame">
+                        <div className="iphone-screen">
+                          <ProjectVideo
+                            src={project.video}
+                            poster={project.image}
+                            alt={project.comingSoon ? t('portfolio.privateAlt') : project.title}
+                            className={
+                              'h-full w-full object-cover object-top ' +
+                              (project.comingSoon
+                                ? 'scale-[1.08] blur-[6px] brightness-75'
+                                : 'transition duration-[900ms] ease-out group-hover:scale-[1.025]')
+                            }
+                          />
+
+                          <div className="iphone-screen-shade" aria-hidden="true" />
+                          <div className="iphone-statusbar" aria-hidden="true">
+                            <span>9:41</span>
+                            <span className="iphone-status-icons">
+                              <i />
+                              <i />
+                              <i />
+                            </span>
+                          </div>
+                          <div className="iphone-dynamic-island" aria-hidden="true" />
+                          <div className="iphone-home-indicator" aria-hidden="true" />
+
+                          {project.comingSoon && (
+                            <div className="iphone-private-overlay">
+                              <LockKeyhole size={16} />
+                              <span>{t('portfolio.comingSoon')}</span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
                     {project.comingSoon ? (
-                      <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-4 px-4 text-center">
+                      <div className="pointer-events-none absolute inset-0 z-[3] flex flex-col items-center justify-center gap-4 px-4 text-center">
                         <span className="inline-flex items-center gap-2 rounded-full border border-lime/30 bg-black/65 px-4 py-2 font-mono text-[10px] font-semibold uppercase tracking-[0.19em] text-lime backdrop-blur-xl">
                           <LockKeyhole size={13} aria-hidden="true" />
                           {t('portfolio.privatePreview')}
@@ -62,9 +91,17 @@ export const Portfolio = () => {
                       </div>
                     ) : (
                       <>
-                        <div className="pointer-events-none absolute right-5 top-5 flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-black/50 text-white backdrop-blur transition duration-300 group-hover:bg-lime group-hover:text-black md:right-8 md:top-8 md:h-16 md:w-16">
+                        <div className="project-device-caption pointer-events-none absolute bottom-5 left-5 z-[3] hidden md:block">
+                          <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-lime">
+                            Mobile preview
+                          </p>
+                          <p className="mt-1 text-sm font-semibold text-white/80">{project.title}</p>
+                        </div>
+
+                        <div className="pointer-events-none absolute right-5 top-5 z-[3] flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-black/50 text-white backdrop-blur transition duration-300 group-hover:bg-lime group-hover:text-black md:right-8 md:top-8 md:h-16 md:w-16">
                           <ArrowUpRight size={22} />
                         </div>
+
                         <a
                           href={project.link}
                           target="_blank"
